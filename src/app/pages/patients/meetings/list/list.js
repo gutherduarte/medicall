@@ -1,0 +1,65 @@
+import React from "react";
+import { withRouter } from "react-router-dom";
+import ListView from "./list.view";
+import { connect } from 'react-redux';
+import { getMeetingsUser } from "./../../../../../lib/data/meetings.data";
+
+class List extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      type: 0,
+      user: {},
+    };
+  }
+
+  goRegister = () => {
+    const { history } = this.props;
+    history.push("/meetingsRegister");
+   
+  };
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
+  filtering = () => {
+    const { type } = this.state;
+    return (x) => {
+      return x.type === parseInt(type) || parseInt(type) === 0 || false;
+    };
+  };
+
+  render() {
+    const { data, type } = this.state;
+    const {currentUser } = this.props;
+    this.state.user=currentUser;
+  
+    return (
+      <ListView
+       
+        data={data}
+        goRegister={this.goRegister}
+        type={type}
+        handleChange={this.handleChange}
+        filtering={this.filtering}
+      />
+    );
+  }
+
+  async componentDidMount() {
+    const data = await getMeetingsUser(this.state.user.id);
+    this.setState({
+      data,
+    });
+   
+  }
+}
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser,
+});
+
+export default connect( mapStateToProps, null )(withRouter(List));
