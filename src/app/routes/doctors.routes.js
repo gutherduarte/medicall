@@ -7,8 +7,8 @@ import PatientsList from "./../pages/doctors/meetings/patients-list/patients-lis
 import Consultation from "./../pages/doctors/consultation/patient-list/patient-list";
 import PatientsDetails from "./../pages/doctors/meetings/patients-details/patients-details";
 import Detail from "./../pages/doctors/consultation/detail/detail";
-import Login from '../pages/shared/login/login';
-
+import Login from "../pages/shared/login/login";
+import ConsultationChat from "./../pages/patients/consultation/chat/chat";
 
 class DoctorsRoutes extends React.Component {
   constructor(props) {
@@ -26,11 +26,12 @@ class DoctorsRoutes extends React.Component {
           <Route exact path="/meetings" component={Meetings} />
           <Route exact path="/patientsList" component={PatientsList} />
           <Route exact path="/consultation" component={Consultation} />
+          <Route exact path="/consultationsChat" component={ConsultationChat} />
           <Route exact path="/patientsDetails" component={PatientsDetails} />
           <Route exact path="/detail" component={Detail} />
-          {
-            user === undefined && <Route exact path="/Login" component={Login} />
-          }
+          {user === undefined && (
+            <Route exact path="/Login" component={Login} />
+          )}
           <Route component={Home} />
         </Switch>
       </BrowserRouter>

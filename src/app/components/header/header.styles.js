@@ -1,21 +1,21 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core";
 
-const headerStyles = makeStyles(theme => ({
+const headerStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: 'white',
-    color: '#2a3150',
+    backgroundColor: "white",
+    color: "#2a3150",
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
   appBarShift: {
-    backgroundColor: 'white',
-    color: '#2a3150',
+    backgroundColor: "white",
+    color: "#2a3150",
     marginLeft: 240,
     width: `calc(100% - ${240}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -24,28 +24,28 @@ const headerStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   hide: {
-    display: 'none',
+    display: "none",
   },
   title: {
-    flexGrow:1,
+    flexGrow: 1,
   },
   icon: {
-    fontSize: 19
+    fontSize: 19,
   },
   logo: {
-    width: 180
+    width: 180,
   },
-  spaceBetween:{
-    display: 'flex',
-    flexDirection: 'row',
-    justifyItems: 'space-between',
-    alignItems: 'center'
+  spaceBetween: {
+    display: "flex",
+    flexDirection: "row",
+    justifyItems: "space-between",
+    alignItems: "center",
   },
-  registerDoctor:{
-    textDecoration: 'none',
+  registerDoctor: {
+    textDecoration: "none",
     fontSize: 16,
     fontWeight: 500,
-    color: '#46A2FD'
+    color: "#2a3150",
   },
 }));
 

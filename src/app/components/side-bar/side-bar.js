@@ -1,11 +1,10 @@
-import React from 'react';
-import SideBarView from './side-bar.view';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import SideBarView from "./side-bar.view";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { signOut } from "../../../lib/data/user.data";
 
 class SideBar extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -16,43 +15,42 @@ class SideBar extends React.Component {
 
   handleOpenSubmenu = () => {
     const { submenu } = this.state;
-    this.setState({submenu: !submenu});
+    this.setState({ submenu: !submenu });
   };
 
   goHome = () => {
     const { history } = this.props;
     history.push("/home");
-  }
+  };
 
   goMeetings = () => {
     const { history } = this.props;
     history.push("/meetings");
-  }
+  };
 
   goConsultation = () => {
     const { history } = this.props;
     history.push("/consultation");
-  }
+  };
 
   goDoctors = () => {
     const { history } = this.props;
     history.push("filterdoctors");
-  }
+  };
   goLogin = () => {
     const { history } = this.props;
     history.push("/login");
-  }
+  };
   goSignOut = () => {
     const { history } = this.props;
     history.push("/home");
     signOut();
-  }
-
+  };
 
   render() {
     const { submenu } = this.state;
     const { open, handleClose, currentUser } = this.props;
-   
+
     return (
       <SideBarView
         open={open}
@@ -71,9 +69,14 @@ class SideBar extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.auth.currentUser,
-});
+const mapStateToProps = (state) => (
+  window.localStorage.setItem(
+    "currentUser",
+    JSON.stringify(state.auth.currentUser)
+  ),
+  {
+    currentUser: state.auth.currentUser,
+  }
+);
 
-
-export default connect( mapStateToProps, null )(withRouter(SideBar));
+export default connect(mapStateToProps, null)(withRouter(SideBar));

@@ -1,12 +1,12 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-const filterDoctorsStyles = makeStyles(theme => ({
+const filterDoctorsStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "right",
-    marginBotton: 20
+    marginBotton: 20,
   },
   cardContainer: {
     width: "95%",
@@ -14,15 +14,16 @@ const filterDoctorsStyles = makeStyles(theme => ({
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "white",
-    boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+    boxShadow:
+      "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
     borderRadius: 3,
   },
   titleContainer: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     marginLeft: 30,
     marginTop: 80,
-    marginBottom: 10
+    marginBottom: 10,
   },
   title: {
     fontSize: 20,
@@ -34,15 +35,15 @@ const filterDoctorsStyles = makeStyles(theme => ({
   },
   titles: {
     fontSize: 18,
-    color: "#2a3150",
-    fontWeight : "bold",
-    borderBottom: '1px solid #e9e9e9',
+    color: "white",
+    fontWeight: "bold",
+    borderBottom: "1px solid #e9e9e9",
     paddingBottom: 10,
     marginBottom: 20,
     marginTop: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   centerCard: {
     width: "90%",
@@ -63,25 +64,24 @@ const filterDoctorsStyles = makeStyles(theme => ({
   fontBold: {
     fontWeight: "bold",
     fontSize: 28,
-    color: '#2a3150'
+    color: "#2a3150",
   },
   establishmentCard: {
     marginTop: "10%",
     marginBottom: "10%",
-    backgroundColor: '#00ab93',
+    backgroundColor: "#2a3150",
   },
   font: {
-    color: '#484F6C'
+    color: "#484F6C",
   },
   cardAction: {
-    display: 'flex'
+    display: "flex",
   },
-   image: {
+  image: {
     width: 180,
     height: 160,
-    marginBottom: 25
+    marginBottom: 25,
   },
-  
 }));
 
 export { filterDoctorsStyles };

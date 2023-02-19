@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const listStyles = makeStyles((theme) => ({
-   titleContainer: {
-    display: 'flex',
-    alignItems: 'center',
+  titleContainer: {
+    display: "flex",
+    alignItems: "center",
     marginLeft: 30,
     marginTop: 80,
-    marginBottom: 10
+    marginBottom: 10,
   },
   title: {
     fontSize: 20,
@@ -58,6 +58,9 @@ const listStyles = makeStyles((theme) => ({
   },
   textBold: {
     fontWeight: "bold",
+  },
+  icon: {
+    fontSize: 19,
   },
 }));
 

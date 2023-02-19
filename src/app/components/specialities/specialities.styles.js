@@ -1,12 +1,12 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-const specialitiesStyles = makeStyles(theme => ({
+const specialitiesStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "right",
-    marginBotton: 20
+    marginBotton: 20,
   },
   cardContainer: {
     width: "95%",
@@ -14,7 +14,8 @@ const specialitiesStyles = makeStyles(theme => ({
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "white",
-    boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+    boxShadow:
+      "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
     borderRadius: 3,
   },
   title: {
@@ -26,44 +27,44 @@ const specialitiesStyles = makeStyles(theme => ({
     color: "#39393b",
   },
   titleContainer: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     marginLeft: 30,
     marginTop: 80,
-    marginBottom: 10
+    marginBottom: 10,
   },
-   centerCard: {
+  centerCard: {
     width: "90%",
     marginTop: 30,
-    marginBottom: 30
+    marginBottom: 30,
   },
   specialityCard: {
-    backgroundColor: '#31beff',
+    backgroundColor: "#2a3150",
   },
   cardAction: {
-    display: 'flex'
+    display: "flex",
   },
   image: {
     width: 80,
     height: 80,
-    marginBottom: 20
+    marginBottom: 20,
   },
   cardContent: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   quantity: {
     marginTop: 10,
-    fontStyle: 'italic',
+    fontStyle: "italic",
     fontSize: 17,
-    color: 'white'
+    color: "white",
   },
   name: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
     fontSize: 19,
-  }
+  },
 }));
 
 export { specialitiesStyles };

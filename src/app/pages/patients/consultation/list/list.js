@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import ListView from "./list.view";
 import { getConsultationsUser } from "./../../../../../lib/data/consultation.data";
 
@@ -20,47 +20,50 @@ class List extends React.Component {
     history.push("/consultationsRegister");
   };
 
-   handleChange = (e) => {
+  handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-    filtering = () => {
+  filtering = () => {
     const { type } = this.state;
     return (x) => {
       return x.type === parseInt(type) || parseInt(type) === 0 || false;
     };
   };
 
+  goChat = () => {
+    const { history } = this.props;
+    history.push("/consultationsChat");
+  };
 
   render() {
     const { data, type } = this.state;
-    const {currentUser } = this.props;
-    this.state.user=currentUser;
-    
-    return(
+    const { currentUser } = this.props;
+    this.state.user = currentUser;
+
+    return (
       <ListView
-       
         data={data}
         goRegister={this.goRegister}
         type={type}
         handleChange={this.handleChange}
         filtering={this.filtering}
+        handleChat={this.goChat}
       />
     );
   }
 
   async componentDidMount() {
-    
     const data = await getConsultationsUser(this.state.user.id);
-   
+
     this.setState({
-      data
+      data,
     });
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   currentUser: state.auth.currentUser,
 });
 
-export default connect( mapStateToProps, null )(withRouter(List));
+export default connect(mapStateToProps, null)(withRouter(List));

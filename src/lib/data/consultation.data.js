@@ -24,7 +24,7 @@ const getConsultationsUser = async (id) => {
   const patients = await getPatients();
   const querysnapshot = await db
     .collection(CONSULTATION_KEY)
-    .where("patient","==",id)
+    .where("patient", "==", id)
     .get();
   const consultations = [];
   querysnapshot.forEach((document) => {
@@ -34,7 +34,10 @@ const getConsultationsUser = async (id) => {
           if (document.data().patient === item.id) {
             consultations.push({
               id: document.id,
-              date: document.data().date.toDate().toLocaleDateString(),
+              date: document
+                .data()
+                .date.toDate()
+                .toLocaleDateString(),
               time: format(document.data().time.toDate(), "p"),
               patient: `${item.firstName} ${item.lastName}`,
               patientImage: item.image,
@@ -70,7 +73,10 @@ const getConsultations = async () => {
           if (document.data().patient === item.id) {
             consultations.push({
               id: document.id,
-              date: document.data().date.toDate().toLocaleDateString(),
+              date: document
+                .data()
+                .date.toDate()
+                .toLocaleDateString(),
               time: format(document.data().time.toDate(), "p"),
               patient: `${item.firstName} ${item.lastName}`,
               patientImage: item.image,
@@ -100,88 +106,73 @@ const getDoctorConsultations = async (user) => {
     .get();
   const consultations = [];
   querysnapshot.forEach((document) => {
-  
-      patients.forEach((item) => {
-        if (document.data().doctor === user.id) {
-          if (document.data().patient === item.id) {
-            consultations.push({
-              id: document.id,
-              reply: document.data().reply,
-              date: `${format(document.data().date.toDate(), "d")} ${
-                monthNames[document.data().date.toDate().getMonth()]
-              } ${document.data().date.toDate().getFullYear()}`,
-              reasonsConsultation: document.data().reasonsConsultation,
-              historyDisease: document.data().historyDisease,
-              time: format(document.data().time.toDate(), "p"),
-              patient: `${item.firstName} ${item.lastName}`,
-              patientImage: item.image,
-              phone: item.phone,
-              email: item.email,
-              birthdate: item.birthdate.toDate().toLocaleDateString(),
-              genderPatient: item.gender === 1 ? "Femenino" : "Masculino",
-              locationDate: item.locationDate,
-              identificationCard: item.identificationCard,
-              adress: item.adress,
-              maritalStatus: item.maritalStatus === 1
-              ?
-              "Solter@"
-              :
-              item.maritalStatus === 2
-              ?
-              "Casad@"
-              :
-              item.maritalStatus === 3
-              ?
-              "Viud@"
-              :
-              "Divorciad@",
-              religion: item.religion === 1
-              ?
-              "Católico"
-              :
-              item.religion === 2
-              ?
-              "Mormón"
-              :
-              item.maritalStatus === 3
-              ?
-              "Evangélico"
-              :
-              item.maritalStatus === 4
-              ?
-              "Testigo de Jehová"
-              :
-              "Otro",
-              ethnicGroup: item.ethnicGroup === 1
-              ?
-              "Mestizo"
-              :
-              item.ethnicGroup === 2
-              ?
-              "Miskito"
-              :
-              item.ethnicGroup === 3
-              ?
-              "Rama"
-              :
-              item.ethnicGroup === 4
-              ?
-              "Garífuna"
-              :
-              item.ethnicGroup === 5
-              ?
-              "Chorotega"
-              :
-              "Creole",
-              doctor: `${user.firstName} ${user.lastName} `,
-              state: document.data().state,
-              type: document.data().type,
-              stateDoctor: document.data().stateDoctor,
-            });
-          }
+    patients.forEach((item) => {
+      if (document.data().doctor === user.id) {
+        if (document.data().patient === item.id) {
+          consultations.push({
+            id: document.id,
+            reply: document.data().reply,
+            date: `${format(document.data().date.toDate(), "d")} ${
+              monthNames[
+                document
+                  .data()
+                  .date.toDate()
+                  .getMonth()
+              ]
+            } ${document
+              .data()
+              .date.toDate()
+              .getFullYear()}`,
+            reasonsConsultation: document.data().reasonsConsultation,
+            historyDisease: document.data().historyDisease,
+            time: format(document.data().time.toDate(), "p"),
+            patient: `${item.firstName} ${item.lastName}`,
+            patientImage: item.image,
+            phone: item.phone,
+            email: item.email,
+            birthdate: item.birthdate.toDate().toLocaleDateString(),
+            genderPatient: item.gender === 1 ? "Femenino" : "Masculino",
+            locationDate: item.locationDate,
+            identificationCard: item.identificationCard,
+            adress: item.adress,
+            maritalStatus:
+              item.maritalStatus === 1
+                ? "Solter@"
+                : item.maritalStatus === 2
+                ? "Casad@"
+                : item.maritalStatus === 3
+                ? "Viud@"
+                : "Divorciad@",
+            religion:
+              item.religion === 1
+                ? "Católico"
+                : item.religion === 2
+                ? "Mormón"
+                : item.maritalStatus === 3
+                ? "Evangélico"
+                : item.maritalStatus === 4
+                ? "Testigo de Jehová"
+                : "Otro",
+            ethnicGroup:
+              item.ethnicGroup === 1
+                ? "Mestizo"
+                : item.ethnicGroup === 2
+                ? "Miskito"
+                : item.ethnicGroup === 3
+                ? "Rama"
+                : item.ethnicGroup === 4
+                ? "Garífuna"
+                : item.ethnicGroup === 5
+                ? "Chorotega"
+                : "Creole",
+            doctor: `${user.firstName} ${user.lastName} `,
+            state: document.data().state,
+            type: document.data().type,
+            stateDoctor: document.data().stateDoctor,
+          });
         }
-      });
-  
+      }
+    });
   });
 
   const groupDates = [];
@@ -227,8 +218,17 @@ const getConsultationsByDate = async () => {
     dates.push({
       id: document.id,
       day: format(document.data().date.toDate(), "d"),
-      month: monthNames[document.data().date.toDate().getMonth()],
-      year: document.data().date.toDate().getFullYear(),
+      month:
+        monthNames[
+          document
+            .data()
+            .date.toDate()
+            .getMonth()
+        ],
+      year: document
+        .data()
+        .date.toDate()
+        .getFullYear(),
     });
   });
   const groupDates = [];
@@ -257,15 +257,21 @@ const getConsultationsByDate = async () => {
   return groupDates;
 };
 const createConsulta = async (Consulta) => {
-  await db.collection(CONSULTATION_KEY).doc().set(Consulta);
+  await db
+    .collection(CONSULTATION_KEY)
+    .doc()
+    .set(Consulta);
 };
 
 const updateConsultation = async (id, value) => {
-  await db.collection(CONSULTATION_KEY).doc(id).update({
-    "reply": value,
-    "stateDoctor": 2
-  });
-}
+  await db
+    .collection(CONSULTATION_KEY)
+    .doc(id)
+    .update({
+      reply: value,
+      stateDoctor: 2,
+    });
+};
 
 export {
   getConsultationsUser,
@@ -273,5 +279,5 @@ export {
   getConsultationsByDate,
   getDoctorConsultations,
   createConsulta,
-  updateConsultation
+  updateConsultation,
 };

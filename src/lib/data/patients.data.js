@@ -2,7 +2,7 @@ import db from "./config";
 
 const PATIENTS_KEY = "Users";
 
-const getPatients = async () => {
+export const getPatients = async () => {
   const querysnapshot = await db
     .collection(PATIENTS_KEY)
     .orderBy("firstName")

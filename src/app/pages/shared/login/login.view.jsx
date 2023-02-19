@@ -1,16 +1,15 @@
-import React from 'react';
+import React from "react";
 import {
   Grid,
   Typography,
   Button,
   TextField,
-  MenuItem
-} from '@material-ui/core';
-import Layout from '../../../components/shared/theme/layout';
-import { loginStyles } from './login.styles';
+  MenuItem,
+} from "@material-ui/core";
+import Layout from "../../../components/shared/theme/layout";
+import { loginStyles } from "./login.styles";
 
-  const LoginView  = (props)=>{
-
+const LoginView = (props) => {
   const classes = loginStyles();
   const {
     contentLoginForm,
@@ -36,17 +35,23 @@ import { loginStyles } from './login.styles';
     handleSubmitLogin,
     handleSubmitRegister,
     handleChange,
-    isLogging
+    isLogging,
   } = props;
 
-  return(
+  return (
     <Layout>
       <div className={classes.root}>
         <section className={classes.contentAll}>
           <Grid xs={12} className={classes.backBox}>
-            <Grid className={contentLoginForm ? classes.boxOpen : classes.boxClose}>
-              <Typography className={classes.spaceTitle}>¿Ya tienes una cuenta?</Typography>
-              <Typography className={classes.spaceTop}>Inicia sesión para entrar en la página</Typography>
+            <Grid
+              className={contentLoginForm ? classes.boxOpen : classes.boxClose}
+            >
+              <Typography className={classes.spaceTitle}>
+                ¿Ya tienes una cuenta?
+              </Typography>
+              <Typography className={classes.spaceTop}>
+                Inicia sesión para entrar en la página
+              </Typography>
               <Button
                 className={classes.button}
                 variant="outlined"
@@ -56,38 +61,53 @@ import { loginStyles } from './login.styles';
                 Iniciar Sesion
               </Button>
             </Grid>
-            <Grid className={contentRegisterForm ? classes.boxOpen : classes.boxClose}>
-              <Typography className={classes.spaceTitle}>¿Aun no tienes cuenta? </Typography>
-              <Typography className={classes.spaceTop}>Registrarse para iniciar sesión</Typography>
+            <Grid
+              className={
+                contentRegisterForm ? classes.boxOpen : classes.boxClose
+              }
+            >
+              <Typography className={classes.spaceTitle}>
+                ¿Aun no tienes cuenta?{" "}
+              </Typography>
+              <Typography className={classes.spaceTop}>
+                Registrarse para iniciar sesión
+              </Typography>
               <Button
                 className={classes.button}
                 variant="outlined"
                 color="white"
-                onClick={ handleRegisterViewOpen }>
+                onClick={handleRegisterViewOpen}
+              >
                 Registrarse
               </Button>
             </Grid>
           </Grid>
           {/* formulario login y Registrarse*/}
-          <Grid className={contentLoginForm ? classes.openRegister : classes.closeRegister}>
+          <Grid
+            className={
+              contentLoginForm ? classes.openRegister : classes.closeRegister
+            }
+          >
             <Grid className={contentLoginForm ? classes.open : classes.close}>
               <Grid className={classes.contentLoginForm}>
-                <Typography className={classes.title}>Inicio de sesión</Typography>
+                <Typography className={classes.title}>
+                  Inicio de sesión
+                </Typography>
                 <TextField
+                  style={{
+                    color: "#2a3150",
+                  }}
                   className={classes.inputLogin}
                   variant="outlined"
-                  label ="Correo Electronico"
+                  label="Correo Electronico"
                   name="emailLoginPatient"
                   error={emailLoginError === 0 ? false : true}
                   helperText={
                     emailLoginError === 1
-                    ? 'Campo obligatorio'
-                    :
-                    emailLoginError === 2
-                    ?
-                    'Introduzca una dirección de correo válida'
-                    :
-                    null
+                      ? "Campo obligatorio"
+                      : emailLoginError === 2
+                      ? "Introduzca una dirección de correo válida"
+                      : null
                   }
                   value={emailLoginPatient}
                   onChange={handleChange}
@@ -99,22 +119,21 @@ import { loginStyles } from './login.styles';
                   }}
                 />
                 <TextField
+                  style={{
+                    color: "#2a3150",
+                  }}
                   className={classes.inputLogin}
                   variant="outlined"
-                  label ="Contraseña"
+                  label="Contraseña"
                   type="password"
                   name="passwordLoginPatient"
                   error={passwordLoginError === 0 ? false : true}
                   helperText={
                     passwordLoginError === 1
-                    ?
-                    'Campo obligatorio'
-                    :
-                    passwordLoginError === 2
-                    ?
-                    'La contraseña debe contener al menos 6 caracteres'
-                    :
-                    null
+                      ? "Campo obligatorio"
+                      : passwordLoginError === 2
+                      ? "La contraseña debe contener al menos 6 caracteres"
+                      : null
                   }
                   value={passwordLoginPatient}
                   onChange={handleChange}
@@ -130,35 +149,34 @@ import { loginStyles } from './login.styles';
                     variant="outlined"
                     className={classes.buttonLogin}
                     style={{
-                      backgroundColor:"#46A2FD",
-                      borderColor: "#fff",
-                      color: "#fff"
-                      }}
-                      onClick={handleSubmitLogin}
-                    >
-                    {
-                      isLogging
-                      ?
-                      "Iniciando..."
-                      :
-                      "Iniciar"
-                    }
+                      backgroundColor: "#FFFFFF",
+                      color: "#2a3150",
+                      fontWeight: "bold",
+                      border: "2px solid #2a3150",
+                    }}
+                    onClick={handleSubmitLogin}
+                  >
+                    {isLogging ? "Iniciando..." : "Iniciar"}
                   </Button>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid className={contentRegisterForm ? classes.open : classes.close }>
+            <Grid
+              className={contentRegisterForm ? classes.open : classes.close}
+            >
               <div className={classes.contentRegisterForm}>
-                <Typography className={classes.titleRegister}>Registro de usuario</Typography>
+                <Typography className={classes.titleRegister}>
+                  Registro de usuario
+                </Typography>
                 <Grid spacing={2} className={classes.register} container>
                   <Grid item lg={6}>
                     <TextField
                       className={classes.inputStyle}
-                      label ="Nombre"
+                      label="Nombre"
                       variant="outlined"
                       name="firstName"
                       error={firstNameError}
-                      helperText={firstNameError ? 'Campo obligatorio' : null}
+                      helperText={firstNameError ? "Campo obligatorio" : null}
                       value={firstName}
                       onChange={handleChange}
                       InputLabelProps={{
@@ -172,11 +190,11 @@ import { loginStyles } from './login.styles';
                   <Grid item lg={6}>
                     <TextField
                       className={classes.inputStyle}
-                      label ="Apellido"
+                      label="Apellido"
                       variant="outlined"
                       name="lastName"
                       error={lastNameError}
-                      helperText={lastNameError ? 'Campo obligatorio' : null}
+                      helperText={lastNameError ? "Campo obligatorio" : null}
                       value={lastName}
                       onChange={handleChange}
                       InputLabelProps={{
@@ -190,12 +208,12 @@ import { loginStyles } from './login.styles';
                   <Grid item lg={6}>
                     <TextField
                       className={classes.inputStyle}
-                      label ="Teléfono"
+                      label="Teléfono"
                       variant="outlined"
                       name="phone"
                       type="number"
                       error={phoneError}
-                      helperText={phoneError ? 'Campo obligatorio' : null}
+                      helperText={phoneError ? "Campo obligatorio" : null}
                       value={phone}
                       onChange={handleChange}
                       InputLabelProps={{
@@ -210,19 +228,18 @@ import { loginStyles } from './login.styles';
                     <TextField
                       className={classes.inputStyle}
                       select
-                      label ="Sexo"
+                      label="Sexo"
                       variant="outlined"
                       name="gender"
                       error={genderError}
-                      helperText={genderError ? 'Campo obligatorio' : null}
+                      helperText={genderError ? "Campo obligatorio" : null}
                       value={gender}
                       onChange={handleChange}
                       InputLabelProps={{
                         shrink: true,
                       }}
                     >
-                      <MenuItem key={0} value={0}>
-                      </MenuItem>
+                      <MenuItem key={0} value={0}></MenuItem>
                       <MenuItem key={1} value={1}>
                         Masculino
                       </MenuItem>
@@ -234,19 +251,16 @@ import { loginStyles } from './login.styles';
                   <Grid item lg={6}>
                     <TextField
                       className={classes.inputStyle}
-                      label ="Correo Electronico"
+                      label="Correo Electronico"
                       variant="outlined"
                       name="email"
                       error={emailError === 0 ? false : true}
                       helperText={
                         emailError === 1
-                        ? 'Campo obligatorio'
-                        :
-                        emailError === 2
-                        ?
-                        'Introduzca una dirección de correo válida'
-                        :
-                        null
+                          ? "Campo obligatorio"
+                          : emailError === 2
+                          ? "Introduzca una dirección de correo válida"
+                          : null
                       }
                       value={email}
                       onChange={handleChange}
@@ -261,19 +275,15 @@ import { loginStyles } from './login.styles';
                   <Grid item lg={6}>
                     <TextField
                       className={classes.inputStyle}
-                      label ="Contraseña"
+                      label="Contraseña"
                       variant="outlined"
                       name="password"
                       helperText={
                         passwordError === 1
-                        ?
-                        'Campo obligatorio'
-                        :
-                        passwordError === 2
-                        ?
-                        'La contraseña debe contener al menos 6 caracteres'
-                        :
-                        null
+                          ? "Campo obligatorio"
+                          : passwordError === 2
+                          ? "La contraseña debe contener al menos 6 caracteres"
+                          : null
                       }
                       error={passwordError === 0 ? false : true}
                       value={password}
@@ -304,6 +314,6 @@ import { loginStyles } from './login.styles';
       </div>
     </Layout>
   );
-}
+};
 
 export default LoginView;
