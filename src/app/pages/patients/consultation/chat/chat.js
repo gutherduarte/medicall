@@ -104,9 +104,10 @@ function ChatMessage(props) {
           src={
             photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"
           }
+          className={"message-photo"}
         />
 
-        <p>{text}</p>
+        <p className="message-text">{text}</p>
       </div>
     </>
   );

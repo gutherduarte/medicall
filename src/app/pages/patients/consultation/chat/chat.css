@@ -68,7 +68,7 @@
   color: #2a3150;
 }
 
-p {
+.message-text {
   max-width: 50%;
   margin-bottom: 12px;
   line-height: 24px;
@@ -89,18 +89,18 @@ p {
   flex-direction: row-reverse;
 }
 
-.sent p {
+.sent .message-text {
   color: white;
   background: #0b93f6;
   align-self: flex-end;
 }
 
-.received p {
+.received .message-text {
   background: #e5e5ea;
   color: black;
 }
 
-img {
+.message-photo {
   width: 40px;
   height: 40px;
   border-radius: 50%;
