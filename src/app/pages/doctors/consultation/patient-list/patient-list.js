@@ -1,7 +1,7 @@
 import React from "react";
 import PatientsListView from "../patient-list/patients-list.view";
 import { withRouter } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { getDoctorConsultations } from "../../../../../lib/data/consultation.data";
 
 class PatientsList extends React.Component {
@@ -11,7 +11,7 @@ class PatientsList extends React.Component {
     this.state = {
       data: [],
       stateDoctor: 0,
-       user: "",
+      user: "",
     };
   }
 
@@ -28,15 +28,23 @@ class PatientsList extends React.Component {
   filtering = () => {
     const { stateDoctor } = this.state;
     return (x) => {
-      return x.stateDoctor === parseInt(stateDoctor) || parseInt(stateDoctor) === 0 || false;
+      return (
+        x.stateDoctor === parseInt(stateDoctor) ||
+        parseInt(stateDoctor) === 0 ||
+        false
+      );
     };
   };
 
+  goChat = () => {
+    const { history } = this.props;
+    history.push("/consultationsChat");
+  };
 
   render() {
     const { data, stateDoctor } = this.state;
-    const {currentUser } = this.props;
-    this.state.user=currentUser;
+    const { currentUser } = this.props;
+    this.state.user = currentUser;
     return (
       <PatientsListView
         data={data}
@@ -44,6 +52,7 @@ class PatientsList extends React.Component {
         handleChange={this.handleChange}
         filtering={this.filtering}
         goPatientsDetails={this.goPatientsDetails}
+        handleChat={this.goChat}
       />
     );
   }
@@ -56,7 +65,7 @@ class PatientsList extends React.Component {
     });
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   currentUser: state.auth.currentUser,
 });
-export default connect( mapStateToProps, null )(withRouter(PatientsList));
+export default connect(mapStateToProps, null)(withRouter(PatientsList));
