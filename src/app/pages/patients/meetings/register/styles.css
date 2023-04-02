@@ -1,0 +1,9 @@
+.date-time {
+  margin-left: 8rem;
+  margin-bottom: 2rem;
+  height: 3.5rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 18rem;
+  text-align: center;
+}

@@ -48,6 +48,32 @@ const getMeetingsUser = async (id) => {
   return meetings;
 };
 
+const getMeetingsDoctor = async (id) => {
+  const patients = await getPatients();
+  const querysnapshot = await db
+    .collection(MEETINGS_KEY)
+    .where("doctor", "==", id)
+    .get();
+  const meetings = [];
+  querysnapshot.forEach((document) => {
+    patients.forEach((element) => {
+      if (document.data().patient === element.id) {
+        meetings.push({
+          id: document.id,
+          date: document.data().date.toDate(),
+          time: format(document.data().time.toDate(), "p"),
+          // patient: document.data().patient,
+          // doctor: `${element.firstName} ${element.lastName}`,
+          // type: document.data().type,
+          // state: document.data().state,
+          // image: element.image,
+        });
+      }
+    });
+  });
+  return meetings;
+};
+
 const getMeetings = async () => {
   const doctors = await getDoctors();
   const querysnapshot = await db
@@ -234,4 +260,5 @@ export {
   getMeetingsByDate,
   updateMeeting,
   createMeeting,
+  getMeetingsDoctor,
 };
